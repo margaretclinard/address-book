@@ -13,3 +13,7 @@ after_script:
   - cat ./coverage/PhantomJS*/lcov.info | ./node_modules/codeclimate-test-reporter/bin/codeclimate.js
 notifications:
   email: false
+env:
+  global:
+    - secure: L7x7fqXphE94JnvkkbphfRXkINTiz7T+w8TPkM/3JkktvRr9hq6zNMLwXazrxWDLEdvubRVYuf/JX9V6trs9MexU/YSE/m2bUcg6WsiA31kxptTkczAH4ucQxCjfT91ZbzIwF1xgEomplJUUovc/TRY9GpMrsChSSxDfGb5H728=
+    - secure: PltbUqlUJ6Z5PWPia6crvx9EPQRHlb6G+/+asTimph2SG1e/tBQwy7AI2nKBcYvHk8onhLcfNL89S4DCpmXZ/Fbskq937E9S2cLAYyODu5QbwfjU1ycbluzltQO/tUnjSc/sVQ96utLKH8yKiA3JvibIFoX/K0PUVIW719/YAN8=

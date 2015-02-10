@@ -7,45 +7,48 @@
   </head>
   <body>
     <div class="container login">
-      <div class="large-6 large-centered columns">
-        <h1>Login</h1>
-        <input type="email" name="email" placeholder="user@example.com">
-        <input type="password" name="passowrd" placeholder="password">
-      </div>
+        <div class="large-6 large-centered columns">
+          <h1>Login</h1>
+          <form action="#">
+            <input type="email" name="email" placeholder="user@example.com">
+            <input type="password" name="passowrd" placeholder="password">
+            <input type="submit" class="button" value="Login">
+          </form>
+        </div>
     </div>
-    <h1>Address Book</h1>
-    <div class="container">
-      <div>
+    <div class="loggedIn hidden">
+      <h1>Address Book</h1>
+      <div class="container">
         <form>
           <input class="button newContact" value="New Contact">
         </form>
-      </div>
 
-      <form class="contacts-form" action="https://mcaddressbook.firebaseio.com/contacts.json" method="POST">
-        <div>
-          <div class="large-6 large-centered columns">
-            <input type="text" class="name" placeholder="Name">
-            <input type="text" class="phone" placeholder="Phone Number">
-            <input type="text" class="email" placeholder="Email">
-            <input type="text" class="photo" placeholder="Photo URL">
-            <input id="submit" class="button addContact" value="Add Contact">
+        <form class="contacts-form" action="https://mcaddressbook.firebaseio.com/contacts.json" method="POST">
+          <div>
+            <div class="large-6 large-centered columns">
+              <input type="text" class="name" placeholder="Name">
+              <input type="text" class="phone" placeholder="Phone Number">
+              <input type="text" class="email" placeholder="Email">
+              <input type="text" class="photo" placeholder="Photo URL">
+              <input id="submit" class="button addContact" value="Add Contact">
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
 
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th></th>
-          </thead>
-          <tbody class="target">
-          </tbody>
-        </table>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th></th>
+            </thead>
+            <tbody class="target">
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>

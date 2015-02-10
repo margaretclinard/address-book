@@ -2,10 +2,6 @@
 
 'use strict';
 
-function hello() {
-  return 'world';
-}
-
 var FIREBASE_URL = 'https://mcaddressbook.firebaseio.com/contacts.json',
     $form = $('.contacts-form'),
     $newContact = $('.newContact'),

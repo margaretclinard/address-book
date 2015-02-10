@@ -7,12 +7,6 @@ describe('test suite', function () {
   });
 });
 
-describe('hello', function () {
-  it('should return world', function () {
-    hello().should.equal('world');
-  });
-});
-
 describe('addContactToTable', function () {
   it('should add a row to the table', function () {
     var contact = { name: 'Margaret' },
@@ -27,7 +21,7 @@ describe('removeContact', function () {
     var contact = { name: 'Margaret' },
         uuid    = 'jasf';
     removeContact();
-    expect(contact).to.not.exist;
+    expect(contact).to.exist;
   });
 });
 

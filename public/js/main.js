@@ -26,7 +26,6 @@ $(document).ready(function () {
 $.get(FIREBASE_URL, function(data){
   Object.keys(data).forEach(function(uuid) {
     addContactToTable(uuid, data[uuid]);
-    console.log(uuid);
   });
 });
 
@@ -50,8 +49,8 @@ function getContact(event) {
 
   var contact = {name: $name, phone: $phone, email: $email, photo: $photo};
   var data = JSON.stringify(contact);
-  $.post(FIREBASE_URL, data, function(res){
-    addContactToTable(uuid, contact);
+  $.post(FIREBASE_URL, data, function(){
+    addContactToTable(data.uuid, contact);
   });
   $form.hide();
   $addContact.hide();

@@ -24,18 +24,19 @@ $(document).ready(function () {
 });
 
 $.get(FIREBASE_URL, function(data){
-  Object.keys(data).forEach(function(contact) {
-    addContactToTable(data[contact]);
+  Object.keys(data).forEach(function(uuid) {
+    addContactToTable(uuid, data[uuid]);
+    console.log(uuid);
   });
 });
 
-function addContactToTable(contact) {
+function addContactToTable(uuid, contact) {
   var $tr = $('<tr><td class="image"><img class="image" src="' + contact.photo +
              '"></td><td class="name">' + contact.name +
               '</td><td class="phone">' + contact.phone +
               '</td><td class="email">' + contact.email +
              '</td><td><button class="remove">Remove</button></td></tr>');
-
+  $tr.attr('data-uuid', uuid);
   $('.target').append($tr);
 }
 
@@ -61,8 +62,9 @@ function removeContact() {
   $('tbody').on('click', $removeContact, function(evt){
     var $tr = $(evt.target).closest('tr');
     $tr.remove();
-    //var uuid = $tr.data('uuid');
-    //var url = 'https://mcaddressbook.firebaseio.com/contacts' + uuid + '.json';
-    //$.ajax(url, {type: "DELETE"});
+    var uuid = $tr.data('uuid');
+    var url = 'https://mcaddressbook.firebaseio.com/contacts/' + uuid + '.json';
+    $.ajax(url, {type: "DELETE"});
   });
 }
+

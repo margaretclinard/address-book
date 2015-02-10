@@ -51,7 +51,7 @@ function getContact(event) {
   var contact = {name: $name, phone: $phone, email: $email, photo: $photo};
   var data = JSON.stringify(contact);
   $.post(FIREBASE_URL, data, function(res){
-    addContactToTable(contact);
+    addContactToTable(uuid, contact);
   });
   $form.hide();
   $addContact.hide();

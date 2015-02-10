@@ -8,7 +8,7 @@ describe('test suite', function () {
 });
 
 describe('addContactToTable', function () {
-  it('should add a row to the table', function () {
+  it('should have a data attribute', function () {
     var contact = { name: 'Margaret' },
         uuid    = 'jasf';
     addContactToTable(uuid, contact);
@@ -16,12 +16,12 @@ describe('addContactToTable', function () {
   });
 });
 
-describe('removeContact', function () {
-  it('should remove a contact from the table', function () {
-    var contact = { name: 'Margaret' },
-        uuid    = 'jasf';
-    removeContact();
-    expect(contact).to.exist;
-  });
-});
+//describe('removeContact', function () {
+  //it('should remove a contact from the table', function () {
+    //var contact = { name: 'Margaret' },
+        //uuid    = 'jasf';
+    //removeContact();
+    //expect(contact).to.not.exist;
+  //});
+//});
 

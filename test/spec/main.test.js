@@ -12,3 +12,12 @@ describe('hello', function () {
     hello().should.equal('world');
   });
 });
+
+describe('addContactToTable', function () {
+  it('should add a row to the table', function () {
+    var contact = { name: 'Margaret' },
+        uuid    = 'jasf';
+    addContactToTable(uuid, contact);
+    expect('data-uuid').to.exist();
+  });
+});

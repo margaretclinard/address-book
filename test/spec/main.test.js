@@ -27,14 +27,33 @@ describe('DOM', function() {
       });
     });
 
-    describe('removeContact', function () {
-      it('should remove a contact from the table', function () {
-        var contact = { name: 'Margaret' },
+    describe('addContactToTable', function () {
+      it('should properly recognize specific keys', function () {
+        var contact = { name: 'Margaret', phone: '804-363-6115' },
             uuid    = 'jasf';
-        removeContact();
-        expect(contact).to.exist;
+        addContactToTable(uuid, contact);
+        expect(contact.name).to.equal('Margaret');
       });
     });
+
+    describe('addContactToTable', function () {
+      it('should properly recognize keys', function () {
+        var contact = { name: 'Margaret', phone: '804-363-6115' },
+            uuid    = 'jasf';
+        addContactToTable(uuid, contact);
+        expect(Object.keys).to.exist();
+      });
+    });
+
+    //describe('removeContact', function () {
+      //it('remove a table row', function () {
+        //var contact = { name: 'Margaret', phone: '804-363-6115' },
+            //uuid    = 'jasf';
+        //addContactToTable(uuid, contact);
+        //removeContact();
+        //expect('tbody').to.be.empty;
+      //});
+    //});
 
   });
 });

@@ -94,6 +94,7 @@ function addContactToTable(uuid, contact) {
              '</td><td><button class="remove">Remove</button></td></tr>');
   $tr.attr('data-uuid', uuid);
   $('.target').append($tr);
+  $('.contacts-form').trigger('reset');
 }
 
 function getContact(event) {

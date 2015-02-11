@@ -1,12 +1,14 @@
-/* jshint jquery: true */
-
 'use strict';
 
+//var $        = require('jquery'),
+    //_        = require('lodash'),
+    //Firebase = require('firebase');
+
 var FIREBASE_URL = 'https://mcaddressbook.firebaseio.com',
-    $form = $('.contacts-form'),
-    $newContact = $('.newContact'),
-    $addContact = $('.addContact'),
-    fb = new Firebase(FIREBASE_URL);
+    $form        = $('.contacts-form'),
+    $newContact  = $('.newContact'),
+    $addContact  = $('.addContact'),
+    fb           = new Firebase(FIREBASE_URL);
 
 $(document).ready(function () {
   $newContact.click(function() {
@@ -100,11 +102,11 @@ function addContactToTable(uuid, contact) {
 function getContact(event) {
   event.preventDefault();
 
-  var $name = $('.name').val(),
+  var $name    = $('.name').val(),
       $address = $('.address').val(),
-      $phone = $('.phone').val(),
-      $email = $('.email').val(),
-      $photo = $('.photo').val();
+      $phone   = $('.phone').val(),
+      $email   = $('.email').val(),
+      $photo   = $('.photo').val();
 
   var contact = {name: $name, address: $address, phone: $phone, email: $email, photo: $photo};
   var data = JSON.stringify(contact);

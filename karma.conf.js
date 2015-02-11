@@ -15,10 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'bower_components/jquery/dist/jquery.min.js',
-      'bower_components/foundation/js/foundation.min.js',
-      'bower_components/lodash/lodash.min.js',
-      'https://cdn.firebase.com/js/client/2.1.2/firebase.js',
+      'public/vendor/**/*.js',
       'test/spec/**/*.test.js',
       'public/js/**/*.js'
     ],

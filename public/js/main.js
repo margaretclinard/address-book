@@ -89,6 +89,7 @@ function registerAndLogin(obj, cb) {
 function addContactToTable(uuid, contact) {
   var $tr = $('<tr><td class="image"><img class="image" src="' + contact.photo +
              '"></td><td class="name">' + contact.name +
+              '</td><td class="address">' + contact.address +
               '</td><td class="phone">' + contact.phone +
               '</td><td class="email">' + contact.email +
              '</td><td><button class="remove">Remove</button></td></tr>');
@@ -101,11 +102,12 @@ function getContact(event) {
   event.preventDefault();
 
   var $name = $('.name').val(),
+      $address = $('.address').val(),
       $phone = $('.phone').val(),
       $email = $('.email').val(),
       $photo = $('.photo').val();
 
-  var contact = {name: $name, phone: $phone, email: $email, photo: $photo};
+  var contact = {name: $name, address: $address, phone: $phone, email: $email, photo: $photo};
   var data = JSON.stringify(contact);
   $.post(FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends.json', data, function(){
     addContactToTable(data.uuid, contact);

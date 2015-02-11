@@ -18,6 +18,7 @@ module.exports = function(config) {
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/foundation/js/foundation.min.js',
       'bower_components/lodash/lodash.min.js',
+      'https://cdn.firebase.com/js/client/2.1.2/firebase.js',
       'test/spec/**/*.test.js',
       'public/js/**/*.js'
     ],

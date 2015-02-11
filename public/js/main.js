@@ -33,8 +33,8 @@ if (fb.getAuth()) {
   });
 }
 
-$('.login input[type="button"]').click(function (event) {
-  var $loginForm = $(event.target.closest('form')),
+$('.login input[type="button"]').click(function () {
+  var $loginForm = $('.loginForm'),
       email      = $loginForm.find('[type="email"]').val(),
       pass       = $loginForm.find('[type="password"]').val(),
       data       = {email: email, password: pass};

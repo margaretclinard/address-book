@@ -6,7 +6,6 @@ var FIREBASE_URL = 'https://mcaddressbook.firebaseio.com',
     $form = $('.contacts-form'),
     $newContact = $('.newContact'),
     $addContact = $('.addContact'),
-    $removeContact = $('.remove'),
     fb = new Firebase(FIREBASE_URL);
 
 $(document).ready(function () {
@@ -17,7 +16,7 @@ $(document).ready(function () {
   });
 
   $addContact.click(getContact);
-  removeContact();
+  $('tbody').on('click', '.removeButton' , removeContact);
 });
 
 if (fb.getAuth()) {
@@ -92,7 +91,7 @@ function addContactToTable(uuid, contact) {
               '</td><td class="address">' + contact.address +
               '</td><td class="phone">' + contact.phone +
               '</td><td class="email">' + contact.email +
-             '</td><td><button class="remove">Remove</button></td></tr>');
+             '</td><td><button class="removeButton">Remove</button></td></tr>');
   $tr.attr('data-uuid', uuid);
   $('.target').append($tr);
   $('.contacts-form').trigger('reset');
@@ -109,21 +108,20 @@ function getContact(event) {
 
   var contact = {name: $name, address: $address, phone: $phone, email: $email, photo: $photo};
   var data = JSON.stringify(contact);
-  $.post(FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends.json', data, function(){
-    addContactToTable(data.uuid, contact);
+  $.post(FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends.json', data, function(res){
+    console.log(res);
+    addContactToTable(res.name, contact);
   });
   $form.hide();
   $addContact.hide();
   $newContact.show();
 }
 
-function removeContact() {
-  $('tbody').on('click', $removeContact, function(evt){
-    var $tr = $(evt.target).closest('tr');
-    $tr.remove();
-    var uuid = $tr.data('uuid');
-    var url = FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends/' + uuid + '.json';
-    $.ajax(url, {type: "DELETE"});
-  });
+function removeContact(evt) {
+  var $tr = $(evt.target).closest('tr');
+  $tr.remove();
+  var uuid = $tr.data('uuid');
+  var url = FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends/' + uuid + '.json';
+  $.ajax(url, {type: "DELETE"});
 }
 

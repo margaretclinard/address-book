@@ -45,15 +45,15 @@ describe('DOM', function() {
       });
     });
 
-    //describe('removeContact', function () {
-      //it('remove a table row', function () {
-        //var contact = { name: 'Margaret', phone: '804-363-6115' },
-            //uuid    = 'jasf';
-        //addContactToTable(uuid, contact);
-        //removeContact();
+    describe('addContactToTable', function () {
+      it('add a table row to tbody', function () {
+        var contact = { name: 'Margaret', phone: '804-363-6115' },
+            uuid    = 'jasf';
         //expect('tbody').to.be.empty;
-      //});
-    //});
+        addContactToTable(uuid, contact);
+        expect('tbody').to.not.be.empty;
+      });
+    });
 
   });
 });

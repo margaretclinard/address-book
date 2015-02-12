@@ -1,6 +1,6 @@
 {
   "firebase": "mcaddressbook",
-  "public": ".",
+  "public": "public",
   "ignore": [
     "firebase.json",
     "**/.*",

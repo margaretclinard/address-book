@@ -23,7 +23,7 @@ describe('DOM', function() {
         var contact = { name: 'Margaret' },
             uuid    = 'jasf';
         addContactToTable(uuid, contact);
-        expect('data-uuid').to.exist();
+        expect(["data-uuid"]).to.exist();
       });
     });
 

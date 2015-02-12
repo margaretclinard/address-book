@@ -8,7 +8,8 @@ var FIREBASE_URL = 'https://mcaddressbook.firebaseio.com',
     $form        = $('.contacts-form'),
     $newContact  = $('.newContact'),
     $addContact  = $('.addContact'),
-    fb           = new Firebase(FIREBASE_URL);
+    fb           = new Firebase(FIREBASE_URL),
+    token;
 
 $(document).ready(function () {
   $newContact.click(function() {
@@ -25,7 +26,8 @@ if (fb.getAuth()) {
   $('.login').remove();
   $('.app').toggleClass('hidden');
 
-  $.get(FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends.json', function(data){
+  token = fb.getAuth().token;
+  $.get(FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends.json?auth=' + token, function(data){
     if(data !== null) {
       Object.keys(data).forEach(function(uuid) {
         addContactToTable(uuid, data[uuid]);
@@ -110,7 +112,7 @@ function getContact(event) {
 
   var contact = {name: $name, address: $address, phone: $phone, email: $email, photo: $photo};
   var data = JSON.stringify(contact);
-  $.post(FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends.json', data, function(res){
+  $.post(FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends.json?auth=' + token, data, function(res){
     console.log(res);
     addContactToTable(res.name, contact);
   });
@@ -123,7 +125,7 @@ function removeContact(evt) {
   var $tr = $(evt.target).closest('tr');
   $tr.remove();
   var uuid = $tr.data('uuid');
-  var url = FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends/' + uuid + '.json';
+  var url = FIREBASE_URL + '/users/' + fb.getAuth().uid + '/data/friends/' + uuid + '.json?auth=' + token;
   $.ajax(url, {type: "DELETE"});
 }
 

@@ -15,6 +15,7 @@ cd ..
 # Copy bower_components js files
 mkdir public/vendor
 cp bower_components/jquery/dist/jquery.min.js public/vendor
+cp bower_components/jquery/dist/jquery.min.map public/vendor
 cp bower_components/lodash/lodash.min.js public/vendor
 cp bower_components/firebase/firebase.js public/vendor
 
